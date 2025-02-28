@@ -1,71 +1,52 @@
 <div>
   <div>
     <h1>
-      Board #<%= @the_board.id %> details
+      <%= @the_board.name %>
     </h1>
 
-    <div>
-      <div>
-        <a href="/boards">
-          Go back
-        </a>
+    <hr>
+    <h2> Add a new post </h2>
+    <form action="/insert_post" method="post">
+      <div><label for="tite_field">Title</label>
+        <input id= "tite_field" type="text" name="title">
+      </div>
+      <div><label for="body_field">Body</label>
+        <textarea name="body" id="body_field"></textarea>
+      </div>
+      <div><label for="expires_on_field">Expires On</label>
+        <input type="date" id="expires_on_field" name="expires_on">
       </div>
 
-      <div>
-        <a href="/delete_board/<%= @the_board.id %>">
-          Delete board
-        </a>
-      </div>
+    </div>
+    <div><label for="board_id_field"> Board ID </label>
+      <input type="text" id="board_id_field" name="expires_on">
     </div>
 
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_board.name %>
-      </dd>
+    <button>Add post</button>
+  </form>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_board.created_at) %> ago
-      </dd>
+  <hr>
 
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_board.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
-</div>
-
-<hr>
-
-
-<div>
   <div>
-    <h2>
-      Edit board
-    </h2>
+    <div>
+      <h2>
+        Edit board
+      </h2>
 
-    <form action="/modify_board/<%= @the_board.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
+      <form action="/modify_board/<%= @the_board.id %>"  method="post" >
+        <div>
+          <label for="name_box">
+            Name
+          </label>
 
-        <input type="text" id="name_box" name="query_name" value="<%= @the_board.name %>">
-      </div>
+          <input type="text" id="name_box" name="query_name" value="<%= @the_board.name %>">
+        </div>
 
-      <button>
-        Update board
-      </button>
-    </form>
+        <button>
+          Update board
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 
-<hr>
+  <hr>
